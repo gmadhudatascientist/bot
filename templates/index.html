@@ -1,0 +1,123 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Fairview</title>
+
+  <!-- Google Fonts -->
+  <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@300;400;700&display=swap" rel="stylesheet">
+
+  <!-- Dialogflow Messenger Styles -->
+  <link rel="stylesheet" href="https://www.gstatic.com/dialogflow-console/fast/df-messenger/prod/v1/themes/df-messenger-default.css"> 
+  <script src="https://www.gstatic.com/dialogflow-console/fast/df-messenger/prod/v1/df-messenger.js"></script>
+
+  <style>
+    body {
+      margin: 0;
+      font-family: 'Roboto', sans-serif;
+      background-color: white; /* Remove black background */
+      color: #000;
+    }
+
+    /* Header styles */
+    .header {
+      background-color: #000; /* Black header */
+      padding: 10px 20px;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      position: sticky;
+      top: 0;
+      z-index: 1000;
+    }
+
+    .logo {
+      display: flex;
+      align-items: center;
+    }
+
+    .logo img {
+      height: 100px;
+    }
+
+    .nav-links {
+      display: flex;
+      gap: 20px;
+    }
+
+    .nav-links a {
+      text-decoration: none;
+      color: #ffffff;
+      font-weight: 500;
+      font-size: 16px;
+    }
+
+    .nav-links a:hover {
+      text-decoration: underline;
+    }
+
+    .content {
+        padding: 30px;
+        padding-bottom: 100px; /* Add extra space at the bottom */
+    }
+
+
+    df-messenger {
+    z-index: 9999; /* <-- make this really high */
+    position: fixed;
+    bottom: 5px;
+    right: 5px;
+
+    --df-messenger-font-color: #000;
+    --df-messenger-font-family: Roboto Mono;
+    --df-messenger-chat-background: #f5f5f5;
+    --df-messenger-message-user-background: #d3e3fd;
+    --df-messenger-message-bot-background: #DDDDDD;
+
+    --df-messenger-chat-width: 240px;
+    --df-messenger-chat-height: 280px;
+    --df-messenger-minimized-chat-height: 250px;
+    }
+    
+  </style>
+</head>
+
+<body>
+
+  <!-- Header -->
+  <div class="header">
+    <div class="logo">
+      <!-- Use a hosted logo; local path won't work on the web -->
+      <img src="images/fairview-health.png" alt="Fairview Logo">
+    </div>
+    <div class="nav-links">
+      <a href="#">Patients</a>
+      <a href="#">Products</a>
+      <a href="#">Employees</a>
+      <a href="#">Vendors</a>
+      <a href="#">Careers</a>
+      <a href="#">Donate</a>
+      <a href="#">About Us</a>
+    </div>
+  </div>
+  
+  <!-- Main content -->
+  <div class="content">
+    <h1>Welcome to Fairview Chatbot</h1>
+    <p>You can test Dialogflow chatbot here.</p>
+  </div>
+
+  <!-- Dialogflow Messenger -->
+  <df-messenger
+  location="us-central1"
+  project-id="poc-y-in2300325"
+  agent-id="dbd38daa-4a4e-4b11-9bff-a3ebc424945c"
+  language-code="en"
+  max-query-length="-1">
+  <df-messenger-chat-bubble chat-title="Fairview Chatbot"></df-messenger-chat-bubble>
+  </df-messenger>
+
+  </df-messenger>
+
+</body>
+</html>
