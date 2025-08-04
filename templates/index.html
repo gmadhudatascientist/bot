@@ -1,94 +1,211 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8">
-  <title>Fairview</title>
+  <meta charset="UTF-8" />
+  <title>Fairview Combined Layout</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
 
   <!-- Google Fonts -->
   <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@300;400;700&display=swap" rel="stylesheet">
 
-  <!-- Dialogflow Messenger Styles -->
+  <!-- Dialogflow Messenger -->
   <link rel="stylesheet" href="https://www.gstatic.com/dialogflow-console/fast/df-messenger/prod/v1/themes/df-messenger-default.css"> 
   <script src="https://www.gstatic.com/dialogflow-console/fast/df-messenger/prod/v1/df-messenger.js"></script>
 
   <style>
     body {
       margin: 0;
-      font-family: 'Roboto', sans-serif;
-      background-color: white; /* Remove black background */
-      color: #000;
+      font-family: 'Roboto', 'Helvetica Neue', sans-serif;
     }
 
-    /* Header styles */
-    .header {
-      background-color: #000; /* Black header */
-      padding: 10px 20px;
+    .top-banner {
+      background-color: hsl(0, 0%, 95%);
       display: flex;
-      align-items: center;
       justify-content: space-between;
-      position: sticky;
-      top: 0;
-      z-index: 1000;
-    }
-
-    .logo {
-      display: flex;
       align-items: center;
+      padding: 20px 30px;
+      font-weight: normal;
     }
 
-    .logo img {
-      height: 100px;
+    .top-banner a {
+      color: #1f2020;
+      text-decoration: none;
     }
 
-    .nav-links {
-      display: flex;
-      gap: 20px;
+    .brand-row {
+      background-color: #222121;
+      padding: 15px 25px;
+      text-align: right;
     }
 
-    .nav-links a {
+    .brand-names a {
+      margin: 0 20px;
       text-decoration: none;
       color: #ffffff;
       font-weight: 500;
-      font-size: 16px;
     }
 
-    .nav-links a:hover {
+    .main-header {
+      background-color: #3a3939;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      padding: 15px 20px;
+      flex-wrap: wrap;
+    }
+
+    .main-header .logo img {
+      height: 50px;
+    }
+
+    .main-header .nav-links {
+      display: flex;
+      gap: 110px;
+      flex-wrap: wrap;
+    }
+
+    .main-header .nav-links a {
+      color: #dbdbdb;
+      text-decoration: none;
+      font-weight: 500;
+    }
+
+    .main-header .nav-links a:hover {
       text-decoration: underline;
     }
 
-    .content {
-        padding: 30px;
-        padding-bottom: 100px; /* Add extra space at the bottom */
+    .hero {
+      position: relative;
+      text-align: center;
+      color: rgb(0, 0, 0);
     }
 
+    .hero img {
+      width: 100%;
+      height: 600px;
+      object-fit: cover;
+      filter: grayscale(200%);
+    }
+    .hero_res img {
+      width: 100%;
+      height: 600px;
+      object-fit: cover;
+      filter: grayscale(200%);
+    }
 
+    .hero h1 {
+      position: absolute;
+      top: 40%;
+      left: 50%;
+      transform: translate(-50%, -50%);
+      font-size: 3rem;
+      background: rgba(211, 210, 210, 0.5);
+      padding: 15px 30px;
+      border-radius: 8px;
+    }
+
+    .section {
+      padding: 40px 20px;
+      width: 100%;
+    }
+
+    .blue {
+      background-color: #003d68;
+      color: #f3f3f3;
+    }
+    .grey {
+      background-color: #333333;
+      color: #e4e4e4;
+    }
+
+    .grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+      gap: 20px;
+    }
+
+    .stat-box {
+      background: #f4f4f4;
+      padding: 20px;
+      text-align: center;
+      border-radius: 10px;
+    }
+
+    h2 {
+      margin-top: 0;
+      font-size: 1.8rem;
+    }
+
+    p {
+      font-size: 1rem;
+      line-height: 1.6;
+    }
+
+    /* a.button, */
+    /* .section a {
+      background: #ffffff;
+      color: #ffffff;
+      text-decoration: none;
+      padding: 10px 20px;
+      border-radius: 5px;
+      display: inline-block;
+      margin-top: 1rem;
+      font-weight: bold;
+    }
+
+    a.button:hover,
+    .section a:hover {
+      background-color: #dddddd;
+    } */
+
+    .award-img {
+      display: block;
+      max-width: 100%;
+      height: auto;
+      margin: 20px auto;
+    }
+
+    /* Dialogflow styles */
     df-messenger {
-    z-index: 9999; /* <-- make this really high */
-    position: fixed;
-    bottom: 5px;
-    right: 5px;
+      z-index: 9999;
+      position: fixed;
+      bottom: 5px;
+      right: 5px;
 
-    --df-messenger-font-color: #000;
-    --df-messenger-font-family: Roboto Mono;
-    --df-messenger-chat-background: #f5f5f5;
-    --df-messenger-message-user-background: #d3e3fd;
-    --df-messenger-message-bot-background: #DDDDDD;
+      --df-messenger-font-color: #000;
+      --df-messenger-font-family: Roboto;
+      --df-messenger-chat-background: #f5f5f5;
+      --df-messenger-message-user-background: #d3e3fd;
+      --df-messenger-message-bot-background: #dddddd;
 
-    --df-messenger-chat-width: 240px;
-    --df-messenger-chat-height: 280px;
-    --df-messenger-minimized-chat-height: 250px;
+      --df-messenger-chat-width: 260px;
+      --df-messenger-chat-height: 300px;
+      --df-messenger-minimized-chat-height: 250px;
     }
-    
   </style>
 </head>
 
 <body>
+  <!-- Top Pediatric Banner -->
+  <div class="top-banner">
+    <div>M Health Fairview Pediatrics</div>
+    <div><a href="#" target="_blank">We care for kids</a></div>
+  </div>
 
-  <!-- Header -->
-  <div class="header">
+  <!-- Brand Names Row -->
+  <div class="brand-row">
+    <div class="brand-names">
+      <a href="#">M Health Fairview</a>
+      <a href="#">Fairview Range</a>
+      <a href="#">Fairview Pharmacy</a>
+      <a href="#" target="_blank">Grand Itasca</a>
+    </div>
+  </div>
+
+  <!-- Logo + Navigation -->
+  <div class="main-header">
     <div class="logo">
-      <!-- Use a hosted logo; local path won't work on the web -->
-      <img src="{{ url_for('static', filename='images/fairview-health.png') }}" alt="Fairview Logo">
+      <img src="C:\Users\DELL\Downloads\bot\static\images\fairview-health.png" alt="Fairview Logo">
     </div>
     <div class="nav-links">
       <a href="#">Patients</a>
@@ -97,27 +214,124 @@
       <a href="#">Vendors</a>
       <a href="#">Careers</a>
       <a href="#">Donate</a>
-      <a href="#">About Us</a>
     </div>
   </div>
+
+  <!-- Hero Section -->
+  <section class="hero">
+    <img src="https://www.fairview.org/-/media/MHealthFairview/Project/FairviewOrg/MyChart-Hero/Homepage_Hero.ashx?hash=211D3DD63F17B580D34A7073B4498F98" alt="Home Page">
+    <h1>Leading The Way To Better Healthcare</h1>
+  </section>
+
+  <!-- National Award Section -->
+  <section class="section blue">
+    <table style="width: 100%; border-collapse: collapse;">
+      <tr>
+        <td style="width: 25%; vertical-align: top; padding: 2rem;">
+          <h2>Fairview recognized with national award</h2>
+        </td>
+        <td style="width: 80%; vertical-align: top; padding: 2rem;">
+          <p>
+            Fairview is honored to be the 2025 recipient of the American Hospital Association’s Foster G. McGaw Prize.
+            Our community work does not begin or end with this prize. Rather, it affirms our deep commitment to our diverse neighbors
+            and strengthens our resolve to continue and expand our efforts.
+          </p>
+          <a href="#">Learn more about the prize and our work in community.</a>
+        </td>
+      </tr>
+    </table>
+  </section>
+
+  <!-- Diversity Award Section -->
+  <section class="section">
+    <table style="width: 100%; border-collapse: collapse;">
+      <tr>
+        <td style="width: 40%; vertical-align: top; padding: 2rem;">
+          <h2>One of America's Greatest Workplaces for Diversity</h2>
+          <p>
+            Fairview Health Services was once again honored as one of “America’s Greatest Workplaces for Inclusion and Diversity”
+            by Newsweek in 2025. The national list includes more than 1,500 organizations. Fairview last earned this award in 2023.
+          </p>
+          <a href="#">Learn More --></a>
+        </td>
+        <td style="width: 60%; vertical-align: top; padding: 2rem;">
+          <img class="award-img" src="https://www.fairview.org/-/media/Images/Miscellaneous/Newsweek-DEI-Award-2025/Newsweek-Greatest-Workplaces-logo_300x239.ashx?h=239&w=300&hash=77E559D22D5DAFDE9D26749F8F488F46" alt="Newsweek Award">
+        </td>  
+      </tr>    
+    </table>
+  </section>
+
+  <section class="section grey">
+    <table style="width: 100%; border-collapse: collapse;">
+      <tr>
+        <td style="width: 30%; vertical-align: top; padding: 2rem;">
+          <h2>Practice Made Perfect</h2>
+        </td>
+        <td style="width: 70%; vertical-align: top; padding: 2rem;">
+          <h1>Improving Patient Outcomes</h1>
+          <p>
+            While there are no promises in medicine, there are guarantees and ours is to always relentlessly advocate for our patients. We are constantly improving ourselves by letting past results inform future decisions.
+          </p>
+          <h1>On-Demand Access to Care</h1>
+          <p>
+            Wellness should have no waiting line. When patients find themselves in need of care, any amount of delay can only add to worry. That’s why we strive for zero latency care: when they need it, where they need it.
+          </p>
+        </td>  
+      </tr>    
+    </table>
+  </section>
+  <section class="hero_res">
+    <table style="width: 100%; border-collapse: collapse;">
+      <tr>
+        <td style="width: 35%; vertical-align: top; padding: 2rem;">
+          <h2>Backed by Expertise</h2>
+        </td>
+        <td style="width: 65%; vertical-align: top; padding: 2rem;">
+          <img class="award-img" src="C:\Users\DELL\Downloads\HomePage_Article_600-Active-Research-Studies.webp" alt="Research">
+          <h1>600 Active Research Studies</h1>
+          <p>
+            When we say we’re using techniques that are at the forefront of medicine, we say that because we’re right there ourselves, developing those techniques. When we’re not caring for patients, we’re caring for the future.
+          </p>
+          <img class="award-img" src="C:\Users\DELL\Downloads\HomePage_Article_Top-rated-providers.webp" alt="Research pr">
+          <h1>Top Rated Providers</h1>
+          <p>
+            No amount of technological upgrades or program expansions guarantees a customer feels satisfied with their treatment. That takes compassionate care. The results are clear: our network’s clinics, facilities, and staff are consistently rated at the top.
+          </p>
+        </td>  
+      </tr>    
+    </table>
+  </section>
   
-  <!-- Main content -->
-  <div class="content">
-    <h1>Welcome to Fairview Chatbot</h1>
-    <p>You can test Dialogflow chatbot here.</p>
-  </div>
+  <!-- Stats Section -->
+  <section class="section">
+    <h2>Healing Our Community</h2>
+    <div class="grid">
+      <div class="stat-box">
+        <h3>Yearly Patients</h3>
+        <p>2.1M</p>
+      </div>
+      <div class="stat-box">
+        <h3>Specialties</h3>
+        <p>100+</p>
+      </div>
+      <div class="stat-box">
+        <h3>Locations</h3>
+        <p>142</p>
+      </div>
+      <div class="stat-box">
+        <h3>Providers & Affiliates</h3>
+        <p>36k+</p>
+      </div>
+    </div>
+  </section>
 
   <!-- Dialogflow Messenger -->
   <df-messenger
-  location="us-central1"
-  project-id="poc-y-in2300325"
-  agent-id="dbd38daa-4a4e-4b11-9bff-a3ebc424945c"
-  language-code="en"
-  max-query-length="-1">
-  <df-messenger-chat-bubble chat-title="Fairview Chatbot"></df-messenger-chat-bubble>
+    location="us-central1"
+    project-id="poc-y-in2300325"
+    agent-id="dbd38daa-4a4e-4b11-9bff-a3ebc424945c"
+    language-code="en">
+    <df-messenger-chat-bubble chat-title="Fairview Chatbot"></df-messenger-chat-bubble>
   </df-messenger>
-
-  </df-messenger>
-
 </body>
 </html>
